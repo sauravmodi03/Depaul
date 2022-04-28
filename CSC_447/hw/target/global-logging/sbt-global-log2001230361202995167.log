@@ -1,0 +1,8 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(onsole, Some(059ce625-3226-4efc-b9db-5ea134b99a93), Some(CommandSource(console0)))[0m
+[0m[[0m[31merror[0m] [0m[0mNot a valid command: onsole (similar: set, new, onFailure)[0m
+[0m[[0m[31merror[0m] [0m[0mNot a valid project ID: onsole[0m
+[0m[[0m[31merror[0m] [0m[0mExpected ':'[0m
+[0m[[0m[31merror[0m] [0m[0mNot a valid key: onsole (similar: console, consoleQuick, onComplete)[0m
+[0m[[0m[31merror[0m] [0m[0monsole[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m

@@ -1,0 +1,16 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly fp1tests -- -n fp1ex01, Some(59d71b22-2d44-4d1d-b953-e46244b8799f), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /Users/saurav/CSC_447/Projects/hw/target/scala-3.1.0/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- Error: /Users/saurav/CSC_447/Projects/hw/src/main/scala/fp1.scala:93:3 ------[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m93 |[0m   [33mval[0m [36mfactTest[0m : [35mList[Int][0m = {[0m
+[0m[[0m[31merror[0m] [0m[0m   |   [31m^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |The start of this line does not match any of the previous indentation widths.[0m
+[0m[[0m[31merror[0m] [0m[0m   |Indentation width of current line : 3 spaces[0m
+[0m[[0m[31merror[0m] [0m[0m   |This falls between previous widths: 2 spaces and 4 spaces[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 0 s, completed Apr 12, 2022, 10:53:42 AM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0minfo[0m] [0m[0mshutting down sbt server[0m

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="sbt 1" modules="hw_9424" />
+    <profile name="sbt 2" modules="CSC447">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+      <parameters>
+        <parameter value="-encoding" />
+        <parameter value="UTF-8" />
+        <parameter value="-Yexplicit-nulls" />
+        <parameter value="-Ysafe-init" />
+        <parameter value="-new-syntax" />
+        <parameter value="-source:future" />
+        <parameter value="-Xfatal-warnings" />
+      </parameters>
+    </profile>
+  </component>
+</project>

@@ -1,0 +1,26 @@
+1649733615102:;set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile") in _root_.sbt.Global := _root_.scala.Some(_root_.sbt.file("/private/var/folders/6d/1vjjgvqd3m5gm4564gmnv7nr0000gn/T/sbt-structure.xml")),SettingKey[_root_.java.lang.String]("sbtStructureOptions") in _root_.sbt.Global := "download, resolveClassifiers");apply -cp "/Users/shweta/Library/Application Support/JetBrains/IdeaIC2021.3/plugins/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2021.3.0/sbt-structure-extractor-2021.3.0.jar" org.jetbrains.sbt.CreateTasks;preferScala2;*/*:dumpStructure
+1649772266527:clear
+1649772269942:help
+1649772287210:task
+1649772334081:console
+1649774356456:onsole
+1649774360910:console
+1649778215786:testOnly fp1tests
+1649778273516:testOnly fp1tests -- -n fp1ex01
+1649872255505:testOnly fp1tests
+1650472365974:testOnly fp2tests -- -n fp2ex01
+1650472371618:testOnly fp2tests -- -n fp2ex02
+1650472436369:testOnly fp2tests -- -n fp2ex03
+1650472506492:testOnly fp2tests -- -n fp2ex04
+1650472531455:testOnly fp2tests -- -n fp2ex05
+1650472553962:testOnly fp2tests -- -n fp2ex06
+1650472605818:testOnly fp2tests -- -n fp2ex05
+1650472698587:testOnly fp2tests -- -n fp2ex07
+1650472800303:testOnly fp2tests -- -n fp2ex08
+1650472902509:testOnly fp2tests -- -n fp2ex09
+1650472995597:testOnly fp2tests -- -n fp2ex10
+1650473000110:testOnly fp2tests --
+1651029328549:testOnly fp3tests --
+1651091539862:testOnly fp2tests --
+1651091543742:testOnly fp1tests --
+1651091546991:testOnly fp3tests --

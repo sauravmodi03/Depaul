@@ -1,13 +1,16 @@
 package shop.data;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 // TODO: complete the tests
-public class DataTEST extends TestCase {
-  public DataTEST(String name) {
-    super(name);
+public class DataTEST {
+  public DataTEST() {
+    super();
   }
+
+  @Test
   public void testConstructorAndAttributes() {
     String title1 = "XX";
     String director1 = "XY";
@@ -25,6 +28,7 @@ public class DataTEST extends TestCase {
     assertEquals(director1, v2.director());
   }
 
+  @Test
   public void testConstructorExceptionYear() {
     try {
       Data.newVideo("X", 1800, "Y");
@@ -42,6 +46,7 @@ public class DataTEST extends TestCase {
     }
   }
 
+  @Test
   public void testConstructorExceptionTitle() {
     try {
       Data.newVideo(null, 2002, "Y");
@@ -57,8 +62,20 @@ public class DataTEST extends TestCase {
     } catch (IllegalArgumentException e) { }
   }
 
+  @Test
   public void testConstructorExceptionDirector() {
-    // TODO
+    try {
+      Data.newVideo("T1", 2002, null);
+      fail();
+    } catch (IllegalArgumentException e) { }
+    try {
+      Data.newVideo("T1", 2002, "");
+      fail();
+    } catch (IllegalArgumentException e) { }
+    try {
+      Data.newVideo("T1", 2002, " ");
+      fail();
+    } catch (IllegalArgumentException e) { }
   }
 
 }

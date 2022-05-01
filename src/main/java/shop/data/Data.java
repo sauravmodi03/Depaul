@@ -21,8 +21,7 @@ public class Data {
    * @throws IllegalArgumentException if Video invariant violated.
    */
   static public Video newVideo(String title, int year, String director) {
-    // TODO
-    return null;
+    return new VideoObj(title,year,director);
   }
 
   /**
@@ -51,8 +50,9 @@ public class Data {
    * @param video the video to be checked out.
    */
   static public UndoableCommand newOutCmd(Inventory inventory, Video video) {
-    // TODO
-    return null;
+    if (!(inventory instanceof InventorySet))
+      throw new IllegalArgumentException();
+    return new CmdOut((InventorySet) inventory, video);
   }
   
   /**
@@ -60,8 +60,9 @@ public class Data {
    * @param video the video to be checked in.
    */
   static public UndoableCommand newInCmd(Inventory inventory, Video video) {
-    // TODO
-    return null;
+    if (!(inventory instanceof InventorySet))
+      throw new IllegalArgumentException();
+    return new CmdIn((InventorySet) inventory, video);
   }
   
   /**
@@ -86,7 +87,8 @@ public class Data {
    * Returns a command to redo that last successfully undone command. 
    */
   static public RerunnableCommand newRedoCmd(Inventory inventory) {
-    // TODO
-    return null;
+    if (!(inventory instanceof InventorySet))
+      throw new IllegalArgumentException();
+    return ((InventorySet)inventory).getHistory().getRedo();
   }
 }  

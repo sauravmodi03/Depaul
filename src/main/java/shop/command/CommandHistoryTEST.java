@@ -1,12 +1,15 @@
 package shop.command;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class CommandHistoryTEST extends TestCase {
-  public CommandHistoryTEST(String name) {
-    super(name);
+import static org.junit.Assert.*;
+
+public class CommandHistoryTEST {
+  public CommandHistoryTEST() {
+    super();
   }
 
+  @Test
   public void testEmptyExceptions() {
     CommandHistoryObj h = new CommandHistoryObj();
     assertSame(null, h.topUndoCommand());
@@ -15,11 +18,13 @@ public class CommandHistoryTEST extends TestCase {
     assertFalse(h.getRedo().run());
   }
 
+
   private void checkStacks(CommandHistoryObj h, UndoableCommand topUndo, UndoableCommand topRedo) {
     assertSame(topUndo, h.topUndoCommand());
     assertSame(topRedo, h.topRedoCommand());
   }
 
+  @Test
   public void testThatTopIsSetByAddUndoAndRedo() {
     CommandHistoryObj h = new CommandHistoryObj();
 
@@ -66,6 +71,7 @@ public class CommandHistoryTEST extends TestCase {
   private boolean _didUndo;
   private boolean _didRedo;
 
+  @Test
   public void testThatMethodsArePerformed() {
     CommandHistoryObj h = new CommandHistoryObj();
 

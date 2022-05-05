@@ -25,9 +25,17 @@ final class CmdIn implements UndoableCommand {
       return false;
     }
   }
+
+  /**
+   * Undo the command.
+   */
   public void undo() {
     _inventory.replaceEntry(_video,_oldvalue);
   }
+
+  /**
+   * Redo the command.
+   */
   public void redo() {
     _inventory.checkIn(_video);
   }

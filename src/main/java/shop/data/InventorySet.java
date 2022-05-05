@@ -14,7 +14,7 @@ final class InventorySet implements Inventory {
 
   InventorySet() {
     _data = new HashMap<>();
-    _history = new CommandHistoryObj();
+    _history = CommandHistoryFactory.newCommandHistory();
   }
 
   /**

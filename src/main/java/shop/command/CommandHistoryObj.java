@@ -1,7 +1,7 @@
 package shop.command;
 import java.util.Stack;
 
-public final class CommandHistoryObj implements CommandHistory {
+final class CommandHistoryObj implements CommandHistory {
   Stack<UndoableCommand> _undoStack = new Stack<UndoableCommand>();
   Stack<UndoableCommand> _redoStack = new Stack<UndoableCommand>();
   RerunnableCommand _undoCmd = new RerunnableCommand () {

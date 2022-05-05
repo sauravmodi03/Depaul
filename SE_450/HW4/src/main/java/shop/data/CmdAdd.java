@@ -19,7 +19,7 @@ final class CmdAdd implements Command {
     try {
       _inventory.addNumOwned(this._video,this._change);
       return true;
-    } catch (UnsupportedOperationException ex) {
+    } catch (IllegalArgumentException ex) {
       System.out.println("Error : " + ex.getMessage());
       return false;
     }

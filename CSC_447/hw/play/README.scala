@@ -45,3 +45,8 @@ def length2[X](xs:List[X], accumulator:Int = 0, d:Int = 0): Int =
 //    scala> length1(xs)
 //    scala> length2(xs)
 // Try changing length1 to use a depth parameter for indentation.
+
+def f[A] (xss:List[List[A]]) =
+for (xs <- xss if xs.length > 0 ; x <- xs.tail) yield x
+
+f(List(List(0,1,2)))

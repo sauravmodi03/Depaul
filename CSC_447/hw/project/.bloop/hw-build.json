@@ -2,15 +2,15 @@
     "version": "1.4.0",
     "project": {
         "name": "hw-build",
-        "directory": "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project",
-        "workspaceDir": "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project",
+        "directory": "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project",
+        "workspaceDir": "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project",
         "sources": [
-            "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\src\\main\\scala",
-            "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\src\\main\\scala-2.12",
-            "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\src\\main\\scala-2",
-            "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\src\\main\\java",
-            "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\src\\main\\scala-sbt-1.0",
-            "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\target\\scala-2.12\\sbt-1.0\\src_managed\\main"
+            "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\src\\main\\scala",
+            "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\src\\main\\scala-2.12",
+            "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\src\\main\\scala-2",
+            "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\src\\main\\java",
+            "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\src\\main\\scala-sbt-1.0",
+            "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\target\\scala-2.12\\sbt-1.0\\src_managed\\main"
         ],
         "dependencies": [
             
@@ -105,11 +105,11 @@
             "C:\\Users\\saura\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\squareup\\okio\\okio\\1.17.2\\okio-1.17.2.jar",
             "C:\\Users\\saura\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\config\\1.3.3\\config-1.3.3.jar"
         ],
-        "out": "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\.bloop\\hw-build",
-        "classesDir": "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\.bloop\\hw-build\\scala-2.12\\sbt-1.0\\classes",
+        "out": "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\.bloop\\hw-build",
+        "classesDir": "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\.bloop\\hw-build\\scala-2.12\\sbt-1.0\\classes",
         "resources": [
-            "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\src\\main\\resources",
-            "D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project\\target\\scala-2.12\\sbt-1.0\\resource_managed\\main"
+            "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\src\\main\\resources",
+            "D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project\\target\\scala-2.12\\sbt-1.0\\resource_managed\\main"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -201,7 +201,7 @@
             "config": {
                 "home": "C:\\Users\\saura\\AppData\\Local\\Coursier\\cache\\arc\\https\\github.com\\AdoptOpenJDK\\openjdk8-binaries\\releases\\download\\jdk8u292-b10\\OpenJDK8U-jdk_x64_windows_hotspot_8u292b10.zip\\jdk8u292-b10\\jre",
                 "options": [
-                    "-Duser.dir=D:\\Depaul University\\Q1\\CSC_447\\Projects\\hw\\project"
+                    "-Duser.dir=D:\\Depaul University\\GitRepository\\Depaul\\CSC_447\\hw\\project"
                 ]
             },
             "mainClass": [

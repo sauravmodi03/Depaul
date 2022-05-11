@@ -6,6 +6,7 @@ package shop.ui;
 public final class UIForm {
   private final String _heading;
   private final Pair[] _form;
+  private final int _type = 1;
 
   static final class Pair {
     final String prompt;

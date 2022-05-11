@@ -13,8 +13,11 @@ import shop.data.Inventory;
 import shop.data.Video;
 import shop.data.Record;
 import shop.command.Command;
+
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Comparator;
+import java.util.Map;
 
 class Control {
   private static final int EXITED = 0;
@@ -71,6 +74,7 @@ class Control {
     f.add("Year", yearTest);
     f.add("Director", _stringTest);
     _getVideoForm = f.toUIForm("Enter Video");
+    //_getVideoForm.size()
   }
   
   void run() {
@@ -95,29 +99,56 @@ class Control {
     m.add("Add/Remove copies of a video",
       new UIMenuAction() {
         public void run() {
-          String[] result1 = _ui.processForm(_getVideoForm);
-          Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
+          try {
+            String[] result1 = _ui.processForm(_getVideoForm);
+            Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
 
-          UIFormBuilder f = new UIFormBuilder();
-          f.add("Number of copies to add/remove", _numberTest);
-          String[] result2 = _ui.processForm(f.toUIForm(""));
-                                             
-          Command c = Data.newAddCmd(_inventory, v, Integer.parseInt(result2[0]));
-          if (! c.run()) {
-            _ui.displayError("Command failed");
+            UIFormBuilder f = new UIFormBuilder();
+            f.add("Number of copies to add/remove", _numberTest);
+            String[] result2 = _ui.processForm(f.toUIForm(""));
+
+            Command c = Data.newAddCmd(_inventory, v, Integer.parseInt(result2[0]));
+            if (! c.run()) {
+              _ui.displayError("Command failed..!!");
+            }
+          } catch (Exception ex){
+            _ui.displayError(ex.getMessage());
           }
         }
       });
     m.add("Check in a video",
       new UIMenuAction() {
         public void run() {
-          // TODO
+          try{
+              String[] result1 = _ui.processForm(_getVideoForm);
+              Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
+
+              Command c = Data.newInCmd(_inventory, v);
+              if (! c.run()) {
+                _ui.displayError("Command failed..!!");
+              }else{
+                _ui.displayMessage("Video successfully checked in.");
+              }
+          } catch (Exception ex){
+            _ui.displayError(ex.getMessage());
+          }
         }
       });
     m.add("Check out a video",
       new UIMenuAction() {
         public void run() {
-          // TODO
+          try{
+            String[] result1 = _ui.processForm(_getVideoForm);
+            Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
+            Command c = Data.newOutCmd(_inventory, v);
+            if (! c.run()) {
+              _ui.displayError("Command failed..!!");
+            }else{
+              _ui.displayMessage("Video successfully checked out.");
+            }
+          } catch (Exception ex){
+            _ui.displayError(ex.getMessage());
+          }
         }
       });
     m.add("Print the inventory",
@@ -130,7 +161,9 @@ class Control {
       new UIMenuAction() {
         public void run() {
           if (!Data.newClearCmd(_inventory).run()) {
-            _ui.displayError("Command failed");
+            _ui.displayError("Command failed..!!");
+          }else{
+            _ui.displayMessage("Inventory is cleared.");
           }
         }
       });
@@ -138,7 +171,9 @@ class Control {
       new UIMenuAction() {
         public void run() {
           if (!Data.newUndoCmd(_inventory).run()) {
-            _ui.displayError("Command failed");
+            _ui.displayError("Command failed..!!");
+          }else{
+            _ui.displayMessage("Undo command successfully executed.");
           }
         }
       });
@@ -146,14 +181,16 @@ class Control {
       new UIMenuAction() {
         public void run() {
           if (!Data.newRedoCmd(_inventory).run()) {
-            _ui.displayError("Command failed");
+            _ui.displayError("Command failed..!!");
+          }else{
+            _ui.displayMessage("Redo command successfully executed.");
           }
         }
       });
     m.add("Print top ten all time rentals in order",
       new UIMenuAction() {
         public void run() {
-          // TODO
+          _ui.displayMessage(_inventory.printAllTimeRentals());
         }
       });
           
@@ -193,11 +230,13 @@ class Control {
           Data.newAddCmd(_inventory, Data.newVideo("x", 2000, "m"), 24).run();
           Data.newAddCmd(_inventory, Data.newVideo("y", 2000, "m"), 25).run();
           Data.newAddCmd(_inventory, Data.newVideo("z", 2000, "m"), 26).run();
+          _ui.displayMessage("Data Initialized with dummy content.");
         }
       });
     
     _menus[stateNum] = m.toUIMenu("Bob's Video");
   }
+
   private void addEXIT(int stateNum) {
     UIMenuBuilder m = new UIMenuBuilder();
     

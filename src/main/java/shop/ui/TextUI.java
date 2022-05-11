@@ -57,7 +57,15 @@ public final class TextUI implements UI {
   }
 
   public String[] processForm(UIForm form) {
-    // TODO
-    return null;
+    String[] result = new String[3];
+    _out.println(form.getHeading() + " details : ");
+    for (int i = 1; i <= form.size(); i++) {
+      _out.println("  " + i + ". " + form.getPrompt(i-1));
+      result[i-1] = getResponse();
+      if(!form.checkInput(i-1,result[i-1])){
+        throw new RuntimeException("Invalid input. Please insert valid data.");
+      }
+    }
+   return result;
   }
 }

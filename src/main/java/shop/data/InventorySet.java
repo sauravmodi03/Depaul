@@ -22,11 +22,13 @@ final class InventorySet implements Inventory {
    * otherwise replace record for <code>video</code>.
    */
   void replaceEntry(Video video, Record record) {
-    _data.remove(video);
+    Map.Entry<Video,Record> result = getEntry(video);
+    Video v = result.getKey();
+    _data.remove(v);
     if (record != null)
-      _data.put(video,((RecordObj)record).copy());
+      _data.put(v,((RecordObj)record).copy());
     else {
-      _data.remove(video);
+      _data.remove(v);
     }
   }
 
@@ -101,13 +103,15 @@ final class InventorySet implements Inventory {
    * equals numOwned.
    */
   Record checkOut(Video video) {
-    if (_data.containsValue(_data.get(video)) == false || (_data.get(video).numOut()) == (_data.get(video).numOwned())) {
+    Map.Entry<Video,Record> result = getEntry(video);
+    if (result == null || (result.getValue().numOut()) == (result.getValue().numOwned())) {
       throw new IllegalArgumentException("Video has no record or numOut equals numOwned.");
     }
-    Record record = new RecordObj(video,_data.get(video).numOwned(),_data.get(video).numOut(), _data.get(video).numRentals());
-    _data.replace(video,new RecordObj(video,record.numOwned(),record.numOut() + 1, record.numRentals() + 1));
+    Record record = new RecordObj(result.getKey(),result.getValue().numOwned(),result.getValue().numOut(), result.getValue().numRentals());
+    _data.replace(result.getKey(),new RecordObj(result.getKey(),record.numOwned(),record.numOut() + 1, record.numRentals() + 1));
     return record;
   }
+
   
   /**
    * Check in a video.
@@ -117,12 +121,26 @@ final class InventorySet implements Inventory {
    * non-positive.
    */
   Record checkIn(Video video) {
-    if (_data.containsValue(_data.get(video)) == false || (_data.get(video).numOut() <= 0)) {
+    Map.Entry<Video,Record> result = getEntry(video);
+    if (result == null||  (result.getValue().numOut() <= 0)) {
       throw new IllegalArgumentException("Video has no record or numOut non-positive.");
     }
-    Record record = new RecordObj(video,_data.get(video).numOwned(),_data.get(video).numOut(), _data.get(video).numRentals());
-    _data.replace(video, new RecordObj(video, record.numOwned(),record.numOut() - 1, record.numRentals()));
+    Record record = new RecordObj(result.getKey(),result.getValue().numOwned(),result.getValue().numOut(), result.getValue().numRentals());
+    _data.replace(result.getKey(), new RecordObj(result.getKey(), record.numOwned(),record.numOut() - 1, record.numRentals()));
     return record;
+  }
+
+  /**
+   * Method to get the instance of video object from the inventory
+   * @param video requested video object from the user
+   * @return
+   */
+  private Map.Entry<Video,Record> getEntry(Video video) {
+    for(Map.Entry<Video,Record> pair : _data.entrySet()) {
+      if (video.compareTo(pair.getKey()) == 0)
+        return pair;
+    }
+    return null;
   }
   
   /**
@@ -130,12 +148,53 @@ final class InventorySet implements Inventory {
    * @return A copy of the previous inventory as a Map
    */
   Map<Video,Record> clear() {
+    Map<Video,Record> result = getCopy();
+    _data.clear();
+    return result;
+  }
+
+  Map<Video,Record> getCopy() {
     Map<Video,Record> copy = new HashMap<>();
     for (Map.Entry<Video, Record> entry : _data.entrySet()) {
       copy.put(entry.getKey(), entry.getValue());
     }
-    _data.clear();
     return copy;
+  }
+
+  /**
+   * Comparing and printing top ten Rentals
+   * @return
+   */
+  private String getAllTimeRentals(){
+    Iterator<Record> res = this.iterator(new Comparator<>() {
+                                                    @Override
+                                                    public int compare(Record r1, Record r2) {
+                                                        if (r1.numRentals() > r2.numRentals())
+                                                          return -1;
+                                                        else if (r1.numRentals() < r2.numRentals())
+                                                          return 1;
+                                                        else return 0;
+                                                    }});
+    StringBuilder buffer = new StringBuilder();
+    buffer.append("Database:\n");
+    Iterator i = res;
+    int count = 1;
+    while (count  <= 10 && i.hasNext()) {
+      buffer.append("  ");
+      buffer.append(i.next());
+      buffer.append("\n");
+      count++;
+    }
+    return buffer.toString();
+  }
+
+
+  /**
+   * Printing top ten rental details
+   * @return
+   */
+  public String printAllTimeRentals() {
+    return getAllTimeRentals();
   }
 
   /**

@@ -13,6 +13,9 @@ public class Main {
     } else {
       ui = new shop.ui.PopupUI();
     }
+
+    //ui = new shop.ui.TextUI();
+    ui = new shop.ui.PopupUI();
     Control control = new Control(Data.newInventory(), ui);
     control.run();
   }

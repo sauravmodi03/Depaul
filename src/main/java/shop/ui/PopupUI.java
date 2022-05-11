@@ -1,6 +1,10 @@
 package shop.ui;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 //import java.io.IOException;
 
 public final class PopupUI implements UI {
@@ -36,12 +40,25 @@ public final class PopupUI implements UI {
     } catch (NumberFormatException e) {
       selection = 0;
     }
-
     menu.runAction(selection);
   }
 
   public String[] processForm(UIForm form) {
-    // TODO
-    return null;
+    String[] result = new String[3];
+    StringBuilder b = new StringBuilder();
+    b.append(form.getHeading());
+    b.append("\n");
+    b.append("Enter choice by number:");
+    b.append("\n");
+
+    for (int i = 1; i <= form.size(); i++) {
+      b.append("  " + i + ". " + form.getPrompt(i-1));
+      b.append("\n");
+      result[i-1] = JOptionPane.showInputDialog(b.toString());
+      if(!form.checkInput(i-1,result[i-1])){
+        throw new RuntimeException("Invalid input. Please insert valid data.");
+      }
+    }
+    return result;
   }
 }

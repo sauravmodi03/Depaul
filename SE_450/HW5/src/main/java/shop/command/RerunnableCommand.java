@@ -8,5 +8,5 @@ public interface RerunnableCommand extends Command {
    * The command body.
    * @return true if command succeeds, false otherwise
    */
-  public boolean run ();
+  boolean run ();
 }

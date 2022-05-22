@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
-public final class TextUI implements UI {
+final class TextUI implements UI {
   final BufferedReader _in;
   final PrintStream _out;
 
@@ -35,7 +35,7 @@ public final class TextUI implements UI {
     return result;
   }
 
-  public void processMenu(UIMenu menu) {
+  public void processMenu(UIMenuI menu) {
     _out.println(menu.getHeading());
     _out.println("Enter choice by number:");
 
@@ -56,8 +56,16 @@ public final class TextUI implements UI {
     menu.runAction(selection);
   }
 
-  public String[] processForm(UIForm form) {
-    // TODO
-    return null;
+  public String[] processForm(UIFormI form) {
+    String[] result = new String[3];
+    _out.println(form.getHeading() + " details : ");
+    for (int i = 1; i <= form.size(); i++) {
+      _out.println("  " + i + ". " + form.getPrompt(i-1));
+      result[i-1] = getResponse();
+      if(!form.checkInput(i-1,result[i-1])){
+        throw new RuntimeException("Invalid input. Please insert valid data.");
+      }
+    }
+   return result;
   }
 }

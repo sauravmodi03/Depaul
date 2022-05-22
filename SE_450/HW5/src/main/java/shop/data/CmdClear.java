@@ -21,9 +21,17 @@ final class CmdClear implements UndoableCommand {
     _inventory.getHistory().add(this);
     return true;
   }
+
+  /**
+   * Undo the command.
+   */
   public void undo() {
     _inventory.replaceMap(_oldvalue);
   }
+
+  /**
+   * Redo the command.
+   */
   public void redo() {
     _inventory.clear();
   }

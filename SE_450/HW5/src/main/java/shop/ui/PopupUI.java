@@ -1,9 +1,8 @@
 package shop.ui;
 
-import javax.swing.JOptionPane;
-//import java.io.IOException;
+import javax.swing.*;
 
-public final class PopupUI implements UI {
+final class PopupUI implements UI {
   public void displayMessage(String message) {
     JOptionPane.showMessageDialog(null,message);
   }
@@ -12,7 +11,7 @@ public final class PopupUI implements UI {
     JOptionPane.showMessageDialog(null,message,"Error",JOptionPane.ERROR_MESSAGE);
   }
 
-  public void processMenu(UIMenu menu) {
+  public void processMenu(UIMenuI menu) {
     StringBuilder b = new StringBuilder();
     b.append(menu.getHeading());
     b.append("\n");
@@ -36,12 +35,25 @@ public final class PopupUI implements UI {
     } catch (NumberFormatException e) {
       selection = 0;
     }
-
     menu.runAction(selection);
   }
 
-  public String[] processForm(UIForm form) {
-    // TODO
-    return null;
+  public String[] processForm(UIFormI form) {
+    String[] result = new String[3];
+    StringBuilder b = new StringBuilder();
+    b.append(form.getHeading());
+    b.append("\n");
+    b.append("Enter choice by number:");
+    b.append("\n");
+
+    for (int i = 1; i <= form.size(); i++) {
+      b.append("  " + i + ". " + form.getPrompt(i-1));
+      b.append("\n");
+      result[i-1] = JOptionPane.showInputDialog(b.toString());
+      if(!form.checkInput(i-1,result[i-1])){
+        throw new RuntimeException("Invalid input. Please insert valid data.");
+      }
+    }
+    return result;
   }
 }

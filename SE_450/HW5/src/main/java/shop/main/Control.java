@@ -1,30 +1,20 @@
 package shop.main;
 
-import shop.ui.UI;
-import shop.ui.UIMenu;
-import shop.ui.UIMenuAction;
-import shop.ui.UIMenuBuilder;
-import shop.ui.UIError;
-import shop.ui.UIForm;
-import shop.ui.UIFormTest;
-import shop.ui.UIFormBuilder;
+import shop.ui.*;
 import shop.data.Data;
 import shop.data.Inventory;
 import shop.data.Video;
-import shop.data.Record;
 import shop.command.Command;
-import java.util.Iterator;
-import java.util.Comparator;
 
 class Control {
   private static final int EXITED = 0;
   private static final int EXIT = 1;
   private static final int START = 2;
   private static final int NUMSTATES = 10;
-  private UIMenu[] _menus;
+  private UIMenuI[] _menus;
   private int _state;
 
-  private UIForm _getVideoForm;
+  private UIFormI _getVideoForm;
   private UIFormTest _numberTest;
   private UIFormTest _stringTest;
     
@@ -35,7 +25,7 @@ class Control {
     _inventory = inventory;
     _ui = ui;
 
-    _menus = new UIMenu[NUMSTATES];
+    _menus = new UIMenuI[NUMSTATES];
     _state = START;
     addSTART(START);
     addEXIT(EXIT);
@@ -66,7 +56,7 @@ class Control {
         }
       };
 
-    UIFormBuilder f = new UIFormBuilder();
+    UIBuilder f = UIFactory.getUIBuilder();
     f.add("Title", _stringTest);
     f.add("Year", yearTest);
     f.add("Director", _stringTest);
@@ -84,7 +74,7 @@ class Control {
   }
   
   private void addSTART(int stateNum) {
-    UIMenuBuilder m = new UIMenuBuilder();
+    UIBuilder m = UIFactory.getUIBuilder();
     
     m.add("Default",
       new UIMenuAction() {
@@ -95,29 +85,56 @@ class Control {
     m.add("Add/Remove copies of a video",
       new UIMenuAction() {
         public void run() {
-          String[] result1 = _ui.processForm(_getVideoForm);
-          Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
+          try {
+            String[] result1 = _ui.processForm(_getVideoForm);
+            Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
 
-          UIFormBuilder f = new UIFormBuilder();
-          f.add("Number of copies to add/remove", _numberTest);
-          String[] result2 = _ui.processForm(f.toUIForm(""));
-                                             
-          Command c = Data.newAddCmd(_inventory, v, Integer.parseInt(result2[0]));
-          if (! c.run()) {
-            _ui.displayError("Command failed");
+            UIBuilder f = UIFactory.getUIBuilder();
+            f.add("Number of copies to add/remove", _numberTest);
+            String[] result2 = _ui.processForm(f.toUIForm(""));
+
+            Command c = Data.newAddCmd(_inventory, v, Integer.parseInt(result2[0]));
+            if (! c.run()) {
+              _ui.displayError("Command failed..!!");
+            }
+          } catch (Exception ex){
+            _ui.displayError(ex.getMessage());
           }
         }
       });
     m.add("Check in a video",
       new UIMenuAction() {
         public void run() {
-          // TODO
+          try{
+              String[] result1 = _ui.processForm(_getVideoForm);
+              Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
+
+              Command c = Data.newInCmd(_inventory, v);
+              if (! c.run()) {
+                _ui.displayError("Command failed..!!");
+              }else{
+                _ui.displayMessage("Video successfully checked in.");
+              }
+          } catch (Exception ex){
+            _ui.displayError(ex.getMessage());
+          }
         }
       });
     m.add("Check out a video",
       new UIMenuAction() {
         public void run() {
-          // TODO
+          try{
+            String[] result1 = _ui.processForm(_getVideoForm);
+            Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
+            Command c = Data.newOutCmd(_inventory, v);
+            if (! c.run()) {
+              _ui.displayError("Command failed..!!");
+            }else{
+              _ui.displayMessage("Video successfully checked out.");
+            }
+          } catch (Exception ex){
+            _ui.displayError(ex.getMessage());
+          }
         }
       });
     m.add("Print the inventory",
@@ -130,7 +147,9 @@ class Control {
       new UIMenuAction() {
         public void run() {
           if (!Data.newClearCmd(_inventory).run()) {
-            _ui.displayError("Command failed");
+            _ui.displayError("Command failed..!!");
+          }else{
+            _ui.displayMessage("Inventory is cleared.");
           }
         }
       });
@@ -138,7 +157,9 @@ class Control {
       new UIMenuAction() {
         public void run() {
           if (!Data.newUndoCmd(_inventory).run()) {
-            _ui.displayError("Command failed");
+            _ui.displayError("Command failed..!!");
+          }else{
+            _ui.displayMessage("Undo command successfully executed.");
           }
         }
       });
@@ -146,14 +167,16 @@ class Control {
       new UIMenuAction() {
         public void run() {
           if (!Data.newRedoCmd(_inventory).run()) {
-            _ui.displayError("Command failed");
+            _ui.displayError("Command failed..!!");
+          }else{
+            _ui.displayMessage("Redo command successfully executed.");
           }
         }
       });
     m.add("Print top ten all time rentals in order",
       new UIMenuAction() {
         public void run() {
-          // TODO
+          _ui.displayMessage(_inventory.printAllTimeRentals());
         }
       });
           
@@ -193,13 +216,15 @@ class Control {
           Data.newAddCmd(_inventory, Data.newVideo("x", 2000, "m"), 24).run();
           Data.newAddCmd(_inventory, Data.newVideo("y", 2000, "m"), 25).run();
           Data.newAddCmd(_inventory, Data.newVideo("z", 2000, "m"), 26).run();
+          _ui.displayMessage("Data Initialized with dummy content.");
         }
       });
     
     _menus[stateNum] = m.toUIMenu("Bob's Video");
   }
+
   private void addEXIT(int stateNum) {
-    UIMenuBuilder m = new UIMenuBuilder();
+    UIBuilder m = UIFactory.getUIBuilder();
     
     m.add("Default", new UIMenuAction() { public void run() {} });
     m.add("Yes",

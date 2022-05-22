@@ -8,7 +8,8 @@ final class CommandHistoryObj implements CommandHistory {
       public boolean run () {
         boolean result = !_undoStack.empty();
         if (result) {
-          // TODO
+          _redoStack.push(_undoStack.pop());
+          _redoStack.peek().undo();
         }
         return result;
       }
@@ -17,16 +18,18 @@ final class CommandHistoryObj implements CommandHistory {
       public boolean run () {
         boolean result = !_redoStack.empty();
         if (result) {
-          // TODO
+          _undoStack.push(_redoStack.pop());
+          _undoStack.peek().redo();
         }
         return result;
       }
     };
 
   public void add(UndoableCommand cmd) {
-    // TODO
+    _redoStack.clear();
+    _undoStack.add(cmd);
   }
-  
+
   public RerunnableCommand getUndo() {
     return _undoCmd;
   }

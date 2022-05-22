@@ -22,23 +22,27 @@ final class CmdAdd implements UndoableCommand {
       return false;
     }
     _runOnce = true;
-    //System.out.println(_inventory.get(_video) + " " + _video + " " + _change);
     try {
       _oldvalue = _inventory.addNumOwned(_video, _change);
       _inventory.getHistory().add(this);
-      //System.out.println("ok");
       return true;
     } catch (IllegalArgumentException e) {
-      //System.out.println("IAE");
       return false;
     } catch (ClassCastException e) {
-      //System.out.println("CCE");
       return false;
     }
   }
+
+  /**
+   * Undo the command.
+   */
   public void undo() {
     _inventory.replaceEntry(_video,_oldvalue);
   }
+
+  /**
+   * Redo the command.
+   */
   public void redo() {
     _inventory.addNumOwned(_video, _change);
   }

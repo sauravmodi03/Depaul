@@ -8,13 +8,13 @@ public interface UndoableCommand extends Command {
    * Do the command.
    * @return true if command succeeds, false otherwise
    */
-  public boolean run ();
+  boolean run ();
   /**
    * Undo the command.
    */
-  public void undo ();
+  void undo ();
   /**
    * Redo the command.
    */
-  public void redo ();
+  void redo ();
 }

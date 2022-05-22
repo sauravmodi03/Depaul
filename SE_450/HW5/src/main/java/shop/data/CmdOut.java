@@ -15,13 +15,28 @@ final class CmdOut implements UndoableCommand {
     _video = video;
   }
   public boolean run() {
-    // TODO
-    return false;
+    try {
+      _oldvalue = _inventory.checkOut(_video);
+      _inventory.getHistory().add(this);
+      return true;
+    } catch (IllegalArgumentException e) {
+      return false;
+    } catch (ClassCastException e) {
+      return false;
+    }
   }
+
+  /**
+   * Undo the command.
+   */
   public void undo() {
-    // TODO
+    _inventory.replaceEntry(_video,_oldvalue);
   }
+
+  /**
+   * Redo the command.
+   */
   public void redo() {
-    // TODO
+    _inventory.checkOut(_video);
   }
 }

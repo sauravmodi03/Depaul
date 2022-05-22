@@ -47,4 +47,6 @@ public interface Inventory extends Iterable<Record> {
    * Returns the inventory as a string; one record per line.
    */
   public String toString();
+
+  String printAllTimeRentals();
 }

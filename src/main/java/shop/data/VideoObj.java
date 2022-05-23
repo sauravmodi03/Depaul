@@ -1,5 +1,9 @@
 package shop.data;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.WeakHashMap;
+
 /**
  * Implementation of Video interface.
  * @see Data
@@ -8,6 +12,7 @@ final class VideoObj implements Video {
   private final String _title;
   private final int    _year;
   private final String _director;
+  private static Map<Integer,Video> videoCache = new WeakHashMap<>();
 
   /**
    * Initialize all object attributes.
@@ -21,22 +26,57 @@ final class VideoObj implements Video {
     _year = year;
   }
 
+  /**
+   *
+   * @param title
+   * @param year
+   * @param director
+   * @return
+   */
+  public static Video getNewVideo(String title, int year, String director) {
+    Video newVideo = videoCache.computeIfAbsent(getKey(title,year,director), newKey -> {
+          return new VideoObj(title, year, director);
+        });
+    return newVideo;
+  }
+
+  /**
+   *
+   * @return
+   */
   public String director() {
     return this._director;
   }
 
+  /**
+   *
+   * @return
+   */
   public String title() {
     return this._title;
   }
 
+  /**
+   *
+   * @return
+   */
   public int year() {
     return this._year;
   }
 
+  /**
+   *
+   * @param thatObject the Object to be compared.
+   * @return
+   */
   public boolean equals(Object thatObject) {
     return super.equals(thatObject);
   }
 
+  /**
+   *
+   * @return
+   */
   public int hashCode() {
     int result = 17;
     result = 37*result + ((this.title() != null) ? this.title().hashCode() : 0);
@@ -45,11 +85,33 @@ final class VideoObj implements Video {
     return result;
   }
 
+  /**
+   *
+   * @param title
+   * @param year
+   * @param director
+   * @return
+   */
+  private static int getKey(String title, int year, String director) {
+    return title != null ? title.hashCode() : 0
+            + String.valueOf(year).hashCode()
+            + director != null ? director.hashCode() : 0;
+  }
+
+  /**
+   *
+   * @param that the Video to be compared.
+   * @return
+   */
   public int compareTo(Video that) {
     return this._title.compareTo(that.title()) + Integer.valueOf(this._year).compareTo(Integer.valueOf(that.year()))
             + this._director.compareTo(that.director());
   }
 
+  /**
+   *
+   * @return
+   */
   public String toString() {
     return this._title + " (" + this.year() + ") : " + this._director;
   }

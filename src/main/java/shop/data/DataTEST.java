@@ -26,6 +26,12 @@ public class DataTEST {
     Video v2 = Data.newVideo(title2, year, director2);
     assertEquals(title1, v2.title());
     assertEquals(director1, v2.director());
+
+    Video vid1 = Data.newVideo(title1, year, director1);
+    Video vid2 = Data.newVideo(title1, year, director1);
+
+    assertTrue(vid1==vid2);
+
   }
 
   @Test

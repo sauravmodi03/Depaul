@@ -60,4 +60,6 @@ public interface Video extends Comparable<Video> {
    * <code>"title (year) : director"</code>.
    */
   public String toString();
+
+   //Video getNewVideo(String title, int year, String director);
 }

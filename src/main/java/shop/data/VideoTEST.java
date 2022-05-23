@@ -36,7 +36,6 @@ public class VideoTEST {
     VideoObj v2test = new VideoObj("a", 1900, "b");
 
     assertTrue(!v1test.equals(v2test));
-
   }
 
   /**

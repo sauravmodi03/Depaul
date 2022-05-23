@@ -21,7 +21,8 @@ public class Data {
    * @throws IllegalArgumentException if Video invariant violated.
    */
   static public Video newVideo(String title, int year, String director) {
-    return new VideoObj(title,year,director);
+    //return new VideoObj(title,year,director);
+    return VideoObj.getNewVideo(title,year,director);
   }
 
   /**

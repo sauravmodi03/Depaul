@@ -13,7 +13,7 @@ final class InventorySet implements Inventory {
   private final CommandHistory _history;
 
   InventorySet() {
-    _data = new HashMap<>();
+    _data = new WeakHashMap<>();
     _history = CommandHistoryFactory.newCommandHistory();
   }
 
@@ -22,13 +22,11 @@ final class InventorySet implements Inventory {
    * otherwise replace record for <code>video</code>.
    */
   void replaceEntry(Video video, Record record) {
-    Map.Entry<Video,Record> result = getEntry(video);
-    Video v = result.getKey();
-    _data.remove(v);
+    _data.remove(video);
     if (record != null)
-      _data.put(v,((RecordObj)record).copy());
+      _data.put(video,((RecordObj)record).copy());
     else {
-      _data.remove(v);
+      _data.remove(video);
     }
   }
 
@@ -103,12 +101,11 @@ final class InventorySet implements Inventory {
    * equals numOwned.
    */
   Record checkOut(Video video) {
-    Map.Entry<Video,Record> result = getEntry(video);
-    if (result == null || (result.getValue().numOut()) == (result.getValue().numOwned())) {
+    if (_data.containsValue(_data.get(video)) == false || (_data.get(video).numOut()) == (_data.get(video).numOwned())) {
       throw new IllegalArgumentException("Video has no record or numOut equals numOwned.");
     }
-    Record record = new RecordObj(result.getKey(),result.getValue().numOwned(),result.getValue().numOut(), result.getValue().numRentals());
-    _data.replace(result.getKey(),new RecordObj(result.getKey(),record.numOwned(),record.numOut() + 1, record.numRentals() + 1));
+    Record record = new RecordObj(video,_data.get(video).numOwned(),_data.get(video).numOut(),_data.get(video).numRentals());
+    _data.replace(video,new RecordObj(video,record.numOwned(),record.numOut() + 1, record.numRentals() + 1));
     return record;
   }
 
@@ -121,12 +118,11 @@ final class InventorySet implements Inventory {
    * non-positive.
    */
   Record checkIn(Video video) {
-    Map.Entry<Video,Record> result = getEntry(video);
-    if (result == null||  (result.getValue().numOut() <= 0)) {
+    if (_data.containsValue(_data.get(video)) == false ||  (_data.get(video).numOut() <= 0)) {
       throw new IllegalArgumentException("Video has no record or numOut non-positive.");
     }
-    Record record = new RecordObj(result.getKey(),result.getValue().numOwned(),result.getValue().numOut(), result.getValue().numRentals());
-    _data.replace(result.getKey(), new RecordObj(result.getKey(), record.numOwned(),record.numOut() - 1, record.numRentals()));
+    Record record = new RecordObj(video,_data.get(video).numOwned(),_data.get(video).numOut(), _data.get(video).numRentals());
+    _data.replace(video, new RecordObj(video, record.numOwned(),record.numOut() - 1, record.numRentals()));
     return record;
   }
 
@@ -154,7 +150,7 @@ final class InventorySet implements Inventory {
   }
 
   Map<Video,Record> getCopy() {
-    Map<Video,Record> copy = new HashMap<>();
+    Map<Video,Record> copy = new WeakHashMap<>();
     for (Map.Entry<Video, Record> entry : _data.entrySet()) {
       copy.put(entry.getKey(), entry.getValue());
     }

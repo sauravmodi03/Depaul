@@ -1,0 +1,28 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly storagetests -- -n storageex01, Some(2c1b8cd2-29d4-423e-b4e7-3eda665cbf7f), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mstoragetests:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- EX01 - constant5 *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  java.lang.UnsupportedOperationException:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at storage$.$init$$$anonfun$1(storage.scala:41)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.Function0.apply$mcI$sp(Function0.scala:39)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at storagetests.testFun$proxy1$1(storagetests.scala:15)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at storagetests.$init$$$anonfun$1(storagetests.scala:13)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.propspec.AnyPropSpecLike.propertyImpl$$anonfun$1(AnyPropSpecLike.scala:123)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.Transformer.apply$$anonfun$1(Transformer.scala:22)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.OutcomeOf.outcomeOf(OutcomeOf.scala:85)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.OutcomeOf.outcomeOf$(OutcomeOf.scala:31)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.Transformer.apply(Transformer.scala:22)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 245 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 0, failed 1, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 TEST FAILED ***[0m[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	storagetests[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtestOnly[0m) sbt.TestsFailedException: Tests unsuccessful[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 0 s, completed May 10, 2022 10:23:57 AM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[31merror[0m] [0m[0mserver failed to start on local:sbt-server-c3da866787c59755c3de. java.io.IOException: Could not create lock for \\.\pipe\sbt-server-c3da866787c59755c3de_lock, error 5[0m

@@ -27,3 +27,22 @@
 1651697474769:console
 1651697633650:;set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile") in _root_.sbt.Global := _root_.scala.Some(_root_.sbt.file("C:/Users/saura/AppData/Local/Temp/sbt-structure.xml")),SettingKey[_root_.java.lang.String]("sbtStructureOptions") in _root_.sbt.Global := "download, resolveClassifiers");apply -cp "C:/Program Files/JetBrains/IntelliJ IDEA Educational Edition 2021.3.4/plugins/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2021.3.0/sbt-structure-extractor-2021.3.0.jar" org.jetbrains.sbt.CreateTasks;preferScala2;*/*:dumpStructure
 1651697667321:console
+1652195962618:testOnly storagetests -- -n storageex10
+1652196237002:testOnly storagetests -- -n storageex01
+1652196372038:testOnly storagetests -- -n storageex02
+1652196464743:testOnly storagetests -- -n storageex03
+1652196880368:testOnly storagetests -- -n storageex04
+1652197371105:testOnly storagetests -- -n storageex05
+1652197980090:testOnly storagetests -- -n storageex06
+1652203471516:testOnly storagetests -- -n storageex03
+1652203581464:testOnly storagetests -- -n storageex04
+1652203727119:testOnly storagetests -- -n storageex06
+1652203786919:testOnly storagetests
+1652287512524:testOnly storagetests -- -n storageex06
+1652287519416:testOnly storagetests --
+1652457273859:testOnly argpasstests -- -n argpassex01
+1652626726541:testOnly argpasstests -- -n argpassex02
+1652627198653:testOnly argpasstests -- -n argpassex03
+1652627952321:testOnly argpasstests -- -n argpassex04
+1652628574148:testOnly argpasstests -- -n argpassex05
+1652650348127:testOnly argpasstests --

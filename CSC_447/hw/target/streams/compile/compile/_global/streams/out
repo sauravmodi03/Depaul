@@ -1,7 +1,20 @@
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E007] Type Mismatch Error: /Users/saurav/CSC_447/Projects/hw/src/main/scala/fp2.scala:168:20 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m168 |[0m        [33mcase[0m Nil => Nil[0m
-[0m[[0m[31merror[0m] [0m[0m    |                    [31m^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m    |                    Found:    collection.immutable.Nil.type[0m
-[0m[[0m[31merror[0m] [0m[0m    |                    Required: String[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- Error: D:\Depaul University\GitRepository\Depaul\CSC_447\hw\src\main\scala\argpass.scala:137:10 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m137 |[0m    Val x = Nil[0m
+[0m[[0m[31merror[0m] [0m[0m    |          [31m^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m    |          end of statement expected but '=' found[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- Error: D:\Depaul University\GitRepository\Depaul\CSC_447\hw\src\main\scala\argpass.scala:137:4 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m137 |[0m    Val x = Nil[0m
+[0m[[0m[31merror[0m] [0m[0m    |    [31m^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m    |postfix operator `x` needs to be enabled[0m
+[0m[[0m[31merror[0m] [0m[0m    |by making the implicit value scala.language.postfixOps visible.[0m
+[0m[[0m[31merror[0m] [0m[0m    |----[0m
+[0m[[0m[31merror[0m] [0m[0m    |This can be achieved by adding the import clause 'import scala.language.postfixOps'[0m
+[0m[[0m[31merror[0m] [0m[0m    |or by setting the compiler option -language:postfixOps.[0m
+[0m[[0m[31merror[0m] [0m[0m    |See the Scaladoc for value scala.language.postfixOps for a discussion[0m
+[0m[[0m[31merror[0m] [0m[0m    |why the feature needs to be explicitly enabled.[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: D:\Depaul University\GitRepository\Depaul\CSC_447\hw\src\main\scala\argpass.scala:139:18 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m139 |[0m      [33mcase[0m Nil => x[0m
+[0m[[0m[31merror[0m] [0m[0m    |                  [31m^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m    |                  Not found: x[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m

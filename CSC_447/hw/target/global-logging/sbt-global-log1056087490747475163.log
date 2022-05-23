@@ -1,0 +1,18 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly storagetests --, Some(fddd471a-f9a2-4e1f-93d8-31ea02ff9fe7), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mstoragetests:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX01 - constant5[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX02 - constant[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX03 - counter0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX04 - counter[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX05 - getAndSet[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX06 - getAndSetSpy[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 246 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 6[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 6, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 0 s, completed May 11, 2022 11:45:19 AM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m

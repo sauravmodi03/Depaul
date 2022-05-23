@@ -50,12 +50,15 @@ object argpass:
   // order that they came back from calls, i.e., the integer from the first
   // call to f is the first integer in the returned tuple.
   def refint1(f: RefInt => Unit): (Int, Int, Int) =
-    // TODO: Provide definition here.
-    // Example call:
-    // val r = RefInt (0)
-    // f (r)
-    // val n : Int = r.get()
-    throw UnsupportedOperationException()
+    val r = RefInt (0)
+    f (r)
+    val n1 : Int = r.get()
+    f (r)
+    val n2 : Int = r.get()
+    f (r)
+    val n3 : Int = r.get()
+    (n1,n2,n3)
+
 
   // EXERCISE 2: complete the following higher-order function.  It has one
   // parameter f: a function that takes an instance of RefInt (see above for
@@ -72,8 +75,16 @@ object argpass:
   // order that they came back from calls, i.e., the integer from the first
   // call to f is the first integer in the returned tuple.
   def refint2(f: RefInt => Unit): (Int, Int, Int) =
-    // TODO: Provide definition here.
-    throw UnsupportedOperationException()
+    val r1 = RefInt (0)
+    val r2 = RefInt (0)
+    val r3 = RefInt (0)
+    f (r1)
+    f (r2)
+    f (r3)
+    val n1 : Int = r1.get()
+    val n2 : Int = r2.get()
+    val n3 : Int = r3.get()
+    (n1,n2,n3)
 
   // EXERCISE 3: complete the following function.  It has one parameter r: (a
   // reference to) an instance of RefInt (see above for the definition of the
@@ -83,9 +94,10 @@ object argpass:
   // double the original value (stored in a separate RefInt instance) as the
   // result.
   def refint3(r: RefInt): RefInt =
-    // TODO: Provide definition here.
-    throw UnsupportedOperationException()
-
+    val r2 = RefInt((r.get() * 2))
+    r.set(r.get() + 1)
+    r2
+    
   // EXERCISE 4: complete the following function.
   // It has two parameters
   // - r: (a reference to) an instance of RefInt (see above for the
@@ -98,8 +110,13 @@ object argpass:
   // Your code should return true if f has NOT changed the Int stored in the
   // copy of r.  Otherwise it should return false.
   def refint4(r: RefInt, f: RefInt => Unit): Boolean =
-    // TODO: Provide definition here.
-    throw UnsupportedOperationException()
+   val n = r.get()
+   val c = RefInt(n)
+   f(c)
+   val c1 = c.get()
+   if c1 == n then true else false
+
+
 
   // EXERCISE 5: complete the following function.  It has one parameter: a
   // list of (references to) RefInt instances.
@@ -108,5 +125,7 @@ object argpass:
   // to the caller.  Note that this is the Scala List type, which is
   // immutable!  You can assume that the list you receive is not empty.
   def refint5(xs: List[RefInt]): Unit =
-    // TODO: Provide definition here.
-    throw UnsupportedOperationException()
+    xs match{
+      case Nil => ()
+      case xh :: xt => xh.set(10)
+    }

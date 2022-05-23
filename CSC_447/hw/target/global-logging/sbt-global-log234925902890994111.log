@@ -1,0 +1,13 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly storagetests -- -n storageex06, Some(9a08b133-e0ee-40e9-acd9-17872dc49c72), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to D:\Depaul University\GitRepository\Depaul\CSC_447\hw\target\scala-3.1.0\classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mstoragetests:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX06 - getAndSetSpy[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 204 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 3 s, completed May 11, 2022 11:45:15 AM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m

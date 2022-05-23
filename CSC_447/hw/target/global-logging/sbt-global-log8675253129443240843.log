@@ -1,0 +1,20 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly argpasstests -- -n argpassex01, Some(ee28eda1-82c1-4651-b677-174e7cf1dad0), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to D:\Depaul University\GitRepository\Depaul\CSC_447\hw\target\scala-3.1.0\classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E008] Not Found Error: D:\Depaul University\GitRepository\Depaul\CSC_447\hw\src\main\scala\argpass.scala:63:43 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m63 |[0m     [33mdef[0m [36mres[0m : ([35mInt[0m, [35mInt[0m, [35mInt[0m) = (n1 :: n2 :: n3)[0m
+[0m[[0m[31merror[0m] [0m[0m   |                                           [31m^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                                         value :: is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E007] Type Mismatch Error: D:\Depaul University\GitRepository\Depaul\CSC_447\hw\src\main\scala\argpass.scala:63:49 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m63 |[0m     [33mdef[0m [36mres[0m : ([35mInt[0m, [35mInt[0m, [35mInt[0m) = (n1 :: n2 :: n3)[0m
+[0m[[0m[31merror[0m] [0m[0m   |                                                 [31m^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                                               Found:    Unit[0m
+[0m[[0m[31merror[0m] [0m[0m   |                                               Required: (Int, Int, Int)[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 1 s, completed May 13, 2022 11:05:03 AM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m

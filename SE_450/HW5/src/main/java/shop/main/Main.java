@@ -1,5 +1,6 @@
 package shop.main;
 
+import shop.ui.PopupUI;
 import shop.ui.UIFactory;
 import shop.ui.UI;
 import shop.data.Data;
@@ -15,8 +16,9 @@ public class Main {
 //    }
 
     //ui = UIFactory.getTextUI();
-    ui = UIFactory.getPopupUI();
-    Control control = new Control(Data.newInventory(), ui);
+    ui = new PopupUI();
+    //TestDoB control = new TestDoB(ui);
+    GOSTOP control = new GOSTOP(ui);
     control.run();
   }
 }

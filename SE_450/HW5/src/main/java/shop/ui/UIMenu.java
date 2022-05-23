@@ -3,13 +3,34 @@ package shop.ui;
 /**
  * @see UIMenuBuilder
  */
-final class UIMenu extends UISuper implements UIMenuI {
+public final class UIMenu {
+  private final String _heading;
+  private final Pair[] _menu;
 
-  UIMenu(String heading, Pair[] pairs) {
-    super(heading,pairs);
+  static final class Pair {
+    final String prompt;
+    final UIMenuAction action;
+
+    Pair(String thePrompt, UIMenuAction theAction) {
+      prompt = thePrompt;
+      action = theAction;
+    }
   }
 
+  UIMenu(String heading, Pair[] menu) {
+    _heading = heading;
+    _menu = menu;
+  }
+  public int size() {
+    return _menu.length;
+  }
+  public String getHeading() {
+    return _heading;
+  }
+  public String getPrompt(int i) {
+    return _menu[i].prompt;
+  }
   public void runAction(int i) {
-    this.getPairs()[i].getAction().run();
+    _menu[i].action.run();
   }
 }

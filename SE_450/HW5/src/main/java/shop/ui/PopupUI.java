@@ -1,8 +1,13 @@
 package shop.ui;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+//import java.io.IOException;
 
-final class PopupUI implements UI {
+public final class PopupUI implements UI {
   public void displayMessage(String message) {
     JOptionPane.showMessageDialog(null,message);
   }
@@ -11,7 +16,7 @@ final class PopupUI implements UI {
     JOptionPane.showMessageDialog(null,message,"Error",JOptionPane.ERROR_MESSAGE);
   }
 
-  public void processMenu(UIMenuI menu) {
+  public void processMenu(UIMenu menu) {
     StringBuilder b = new StringBuilder();
     b.append(menu.getHeading());
     b.append("\n");
@@ -38,7 +43,7 @@ final class PopupUI implements UI {
     menu.runAction(selection);
   }
 
-  public String[] processForm(UIFormI form) {
+  public String[] processForm(UIForm form) {
     String[] result = new String[3];
     StringBuilder b = new StringBuilder();
     b.append(form.getHeading());

@@ -2,14 +2,9 @@ package shop.ui;
 
 public class UIFactory {
   private UIFactory() {}
-
-  static public UI getPopupUI () {
-    return new PopupUI();
-  }
-  static public UI getTextUI(){
-    return new TextUI();
-  }
-  static public UIBuilder getUIBuilder(){
-    return new UIPageBuilder();
+  static private UI _UI = new PopupUI();
+  //static private UI _UI = new TextUI();
+  static public UI ui () {
+    return _UI;
   }
 }

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
-final class TextUI implements UI {
+public final class TextUI implements UI {
   final BufferedReader _in;
   final PrintStream _out;
 
@@ -35,7 +35,7 @@ final class TextUI implements UI {
     return result;
   }
 
-  public void processMenu(UIMenuI menu) {
+  public void processMenu(UIMenu menu) {
     _out.println(menu.getHeading());
     _out.println("Enter choice by number:");
 
@@ -56,7 +56,7 @@ final class TextUI implements UI {
     menu.runAction(selection);
   }
 
-  public String[] processForm(UIFormI form) {
+  public String[] processForm(UIForm form) {
     String[] result = new String[3];
     _out.println(form.getHeading() + " details : ");
     for (int i = 1; i <= form.size(); i++) {

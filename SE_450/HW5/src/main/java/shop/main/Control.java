@@ -1,20 +1,33 @@
 package shop.main;
 
-import shop.ui.*;
+import shop.ui.UI;
+import shop.ui.UIMenu;
+import shop.ui.UIMenuAction;
+import shop.ui.UIMenuBuilder;
+import shop.ui.UIError;
+import shop.ui.UIForm;
+import shop.ui.UIFormTest;
+import shop.ui.UIFormBuilder;
 import shop.data.Data;
 import shop.data.Inventory;
 import shop.data.Video;
+import shop.data.Record;
 import shop.command.Command;
+
+import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.Comparator;
+import java.util.Map;
 
 class Control {
   private static final int EXITED = 0;
   private static final int EXIT = 1;
   private static final int START = 2;
   private static final int NUMSTATES = 10;
-  private UIMenuI[] _menus;
+  private UIMenu[] _menus;
   private int _state;
 
-  private UIFormI _getVideoForm;
+  private UIForm _getVideoForm;
   private UIFormTest _numberTest;
   private UIFormTest _stringTest;
     
@@ -25,7 +38,7 @@ class Control {
     _inventory = inventory;
     _ui = ui;
 
-    _menus = new UIMenuI[NUMSTATES];
+    _menus = new UIMenu[NUMSTATES];
     _state = START;
     addSTART(START);
     addEXIT(EXIT);
@@ -56,11 +69,12 @@ class Control {
         }
       };
 
-    UIBuilder f = UIFactory.getUIBuilder();
+    UIFormBuilder f = new UIFormBuilder();
     f.add("Title", _stringTest);
     f.add("Year", yearTest);
     f.add("Director", _stringTest);
     _getVideoForm = f.toUIForm("Enter Video");
+    //_getVideoForm.size()
   }
   
   void run() {
@@ -74,7 +88,7 @@ class Control {
   }
   
   private void addSTART(int stateNum) {
-    UIBuilder m = UIFactory.getUIBuilder();
+    UIMenuBuilder m = new UIMenuBuilder();
     
     m.add("Default",
       new UIMenuAction() {
@@ -89,7 +103,7 @@ class Control {
             String[] result1 = _ui.processForm(_getVideoForm);
             Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
 
-            UIBuilder f = UIFactory.getUIBuilder();
+            UIFormBuilder f = new UIFormBuilder();
             f.add("Number of copies to add/remove", _numberTest);
             String[] result2 = _ui.processForm(f.toUIForm(""));
 
@@ -224,7 +238,7 @@ class Control {
   }
 
   private void addEXIT(int stateNum) {
-    UIBuilder m = UIFactory.getUIBuilder();
+    UIMenuBuilder m = new UIMenuBuilder();
     
     m.add("Default", new UIMenuAction() { public void run() {} });
     m.add("Yes",
